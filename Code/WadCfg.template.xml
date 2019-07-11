@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiagnosticsConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
+  <PublicConfig>
+    <WadCfg>
+      <DiagnosticMonitorConfiguration>
+        <PerformanceCounters scheduledTransferPeriod="PT5M">
+          <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time"
+                                           sampleRate="PT30S"
+                                           unit="Percent"/>
+          <PerformanceCounterConfiguration counterSpecifier="\PhysicalDisk(_Total)\Disk Transfers/sec"
+                                           sampleRate="PT30S"
+                                           unit="CountPerSecond"/>
+        </PerformanceCounters>
+        <WindowsEventLog scheduledTransferPeriod="PT5M">
+          <DataSource name="System!*[System[(Level &lt;= 4)]]"/>
+        </WindowsEventLog>
+        <Metrics resourceId="">
+          <MetricAggregation scheduledTransferPeriod="PT1H"/>
+          <MetricAggregation scheduledTransferPeriod="PT1M"/>
+        </Metrics>
+      </DiagnosticMonitorConfiguration>
+    </WadCfg>
+  </PublicConfig>
+  <IsEnabled>true</IsEnabled>
+</DiagnosticsConfiguration>
